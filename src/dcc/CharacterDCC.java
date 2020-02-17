@@ -114,6 +114,192 @@ public class CharacterDCC {
 				
 			  
 			 */
+
+			public int getStr() {
+				return str;
+			}
+
+			public void setStr(int str) {
+				this.str = str;
+			}
+
+			public int getAgi() {
+				return agi;
+			}
+
+			public void setAgi(int agi) {
+				this.agi = agi;
+			}
+
+			public int getSta() {
+				return sta;
+			}
+
+			public void setSta(int sta) {
+				this.sta = sta;
+			}
+
+			public int getPer() {
+				return per;
+			}
+
+			public void setPer(int per) {
+				this.per = per;
+			}
+
+			public int getItl() {
+				return itl;
+			}
+
+			public void setItl(int itl) {
+				this.itl = itl;
+			}
+
+			public int getLck() {
+				return lck;
+			}
+
+			public void setLck(int lck) {
+				this.lck = lck;
+			}
+
+			public int getMoney() {
+				return money;
+			}
+
+			public void setMoney(int money) {
+				this.money = money;
+			}
+
+			public int getHp() {
+				return hp;
+			}
+
+			public void setHp(int hp) {
+				this.hp = hp;
+			}
+
+			public int getMaxHp() {
+				return maxHp;
+			}
+
+			public void setMaxHp(int maxHp) {
+				this.maxHp = maxHp;
+			}
+
+			public int getStrMod() {
+				return strMod;
+			}
+
+			public void setStrMod(int strMod) {
+				this.strMod = strMod;
+			}
+
+			public int getAgiMod() {
+				return agiMod;
+			}
+
+			public void setAgiMod(int agiMod) {
+				this.agiMod = agiMod;
+			}
+
+			public int getStaMod() {
+				return staMod;
+			}
+
+			public void setStaMod(int staMod) {
+				this.staMod = staMod;
+			}
+
+			public int getPerMod() {
+				return perMod;
+			}
+
+			public void setPerMod(int perMod) {
+				this.perMod = perMod;
+			}
+
+			public int getItlMod() {
+				return itlMod;
+			}
+
+			public void setItlMod(int itlMod) {
+				this.itlMod = itlMod;
+			}
+
+			public int getLckMod() {
+				return lckMod;
+			}
+
+			public void setLckMod(int lckMod) {
+				this.lckMod = lckMod;
+			}
+
+			public int getXp() {
+				return xp;
+			}
+
+			public void setXp(int xp) {
+				this.xp = xp;
+			}
+
+			public String getName() {
+				return name;
+			}
+
+			public void setName(String name) {
+				this.name = name;
+			}
+
+			public Weapon getWeapon() {
+				return weapon;
+			}
+
+			public void setWeapon(Weapon weapon) {
+				this.weapon = weapon;
+			}
+
+			public Armor getArmor() {
+				return armor;
+			}
+
+			public void setArmor(Armor armor) {
+				this.armor = armor;
+			}
+
+			public int getAc() {
+				return ac;
+			}
+
+			public void setAc(int ac) {
+				this.ac = ac;
+			}
+
+			public String getJob() {
+				return job;
+			}
+
+			public void setJob(String job) {
+				this.job = job;
+			}
+
+			public Armoury getArmoury() {
+				return armoury;
+			}
+
+			public void setArmoury(Armoury armoury) {
+				this.armoury = armoury;
+			}
+
+			public boolean isShield() {
+				return shield;
+			}
+
+			public void setShield(boolean shield) {
+				this.shield = shield;
+			}
+			
+			
 		}
 
 	
