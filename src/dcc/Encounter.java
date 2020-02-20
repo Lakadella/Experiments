@@ -28,7 +28,7 @@ public class Encounter {
 		while (antallchars > 0 && antallmonster > 0) {
 			for (int i = 0; i< antallchars; i++) {
 				int tilf = (Diceroller.dx(1, antallmonster)) -1;
-				if (group[i] != null && monsters[tilf] != null && tilf >= 0) {
+				if (tilf >= 0 && group[i] != null && monsters[tilf] != null  ) {
 					int dmg = group[i].attack(monsters[tilf]);
 					monsters[tilf].setHp(monsters[tilf].getHp() - dmg);
 					if (monsters[tilf].getHp() <= 0) {

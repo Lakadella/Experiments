@@ -8,10 +8,11 @@ public class Armoury {
 	private int weaponCount;
 
 	public Armoury() {
-		armor = new Armor[20];
-		weapon = new Weapon[20];
+		armor = new Armor[9];
+		weapon = new Weapon[23];
 		armorCount = 0;
 		weaponCount = 0;
+		
 	}
 
 	public Armor findArmor(String name) {
@@ -27,14 +28,29 @@ public class Armoury {
 	public Weapon findWeapon(String name) {
 		Weapon noWeapon = new Weapon("Unarmed", "Unarmed", 4, "", 0);
 		for (Weapon w : weapon) {
-			if (w != null && w.getName() == name) {
+			if (w != null && w.getName().equals(name)) {
 				return w;
 			}
 		}
 		return noWeapon;
+		
+	
+	}
+	
+	public Weapon returnWeapon(String name) {
+		
+		System.out.println("Return kjorer" + weaponCount);
+		for (int i = 0; i<weaponCount; i++) {
+			if (weapon[i].getName() == name) {
+				
+				return weapon[i];
+			}else { 
+				System.out.println(weapon[i].getName());
+				}
+		}return null;
 	}
 
-	public Armoury makeShop() {
+	public static Armoury makeShop() {
 		Armoury temp = new Armoury();
 		Armor leather = new Armor("Leather", "Leather", 2, 20, 1);
 		temp.addArmor(leather);
@@ -105,12 +121,18 @@ public class Armoury {
 	}
 
 	public void addArmor(Armor ny) {
-		ny = armor[armorCount];
+		armor[armorCount] = ny;
 		armorCount++;
 	}
 
 	public void addWeapon(Weapon ny) {
-		ny = weapon[weaponCount];
+		weapon[weaponCount] = ny;
 		weaponCount++;
+	}
+	
+	public void listWeapons() {
+		for (Weapon w : weapon) {
+			System.out.println(w.getName());
+		}
 	}
 }

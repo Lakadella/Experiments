@@ -1,5 +1,7 @@
 package dcc;
 
+import tools.Diceroller;
+
 public class Monster {
 
 	private String name;
@@ -93,5 +95,16 @@ public class Monster {
 		this.hitDie = hitDie;
 	}
 	
-	
+	public int attack(CharacterDCC character) {
+		int roll = tools.Diceroller.d20(1);
+		
+		if (roll + atkBonus > character.getAc()) {
+			int dmg = (Diceroller.dx(1, amountDie));
+			System.out.println(character.getName() + " take " + dmg + " damage from " + name);
+			return dmg;
+		} else {
+			System.out.println(name + " misses");
+			return 0;
+		}
+	}
 }

@@ -21,13 +21,21 @@ public class TestMain {
 		
 		Party testparty = new Party(5);
 		
-		Mob testmob = new Mob(testMonster, 2);
+		//CharacterDCC[] doink = testparty.getGroup();
+		
+		//doink[0].getArmoury().listWeapons();
+		
+		
+		
+		Mob testmob = new Mob(testMonster, 3);
 		
 		//testmob.listMonsters();
 		
 		Encounter testEnc = new Encounter(testparty, testmob);
 		
 		testEnc.melee();
+		
+		
 		
 		//int option = 0;
 		//while (option != 2) {

@@ -1,6 +1,7 @@
 package dcc;
 
 import tools.*;
+import javax.swing.JOptionPane;
 
 public class CharacterDCC {
 
@@ -57,6 +58,11 @@ public class CharacterDCC {
 			ac =10 + agiMod + armor.getAcBonus();
 			armoury = new Armoury();
 			shield = false;
+			armoury = Armoury.makeShop();
+			printCharacter();
+			name = JOptionPane.showInputDialog("Navn");
+			
+			
 			}
 			
 			
@@ -99,7 +105,14 @@ public class CharacterDCC {
 			
 			job = OccupationDCC.Background(randomizer);
 			
-			weapon = armoury.findWeapon(job);
+			String weaponName = OccupationDCC.weaponBackground(randomizer);	
+			
+			weapon = armoury.findWeapon(weaponName);
+			
+			System.out.println(weapon.getName());
+			
+			
+			
 			OccupationDCC.Item();
 			OccupationDCC.Luck();
 			}		
@@ -299,7 +312,18 @@ public class CharacterDCC {
 				this.shield = shield;
 			}
 			
-			
+			public int attack(Monster monster) {
+				int roll = tools.Diceroller.d20(1);
+				
+				if (roll + strMod > monster.getAc()) {
+					int dmg = (Diceroller.dx(1, weapon.getDmgDie())) + strMod;
+					System.out.println(name +  " do " + dmg + " damage to " + monster.getName() + " with " + weapon.getName());
+					return dmg;
+				} else {
+					System.out.println(name + " missed!");
+					return 0;
+				}
+			}
 		}
 
 	
