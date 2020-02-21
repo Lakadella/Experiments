@@ -11,7 +11,8 @@ public class TestMain {
 		
 		//CharacterDCC testChar = new CharacterDCC();
 		//System.out.println(testChar.getWeapon().getName());
-		Monster testMonster = new Monster("Goblin", 1, 5, 1, 6, 1, 12);
+		Monster antWorker = new Monster("Ant, giant (worker)",0,2,1,4,1,16,1,8,2,5,1,-3);
+		
 		
 		//testChar.printCharacter();
 		
@@ -27,7 +28,7 @@ public class TestMain {
 		
 		
 		
-		Mob testmob = new Mob(testMonster, 3);
+		Mob testmob = new Mob(antWorker, 3);
 		
 		//testmob.listMonsters();
 		

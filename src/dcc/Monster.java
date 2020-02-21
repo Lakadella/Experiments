@@ -11,7 +11,14 @@ public class Monster {
 	private int hp;
 	private int hitDie;
 	private int ac;
-	
+	private int initiativeMod;
+	private int initiative;
+	private int willSave;
+	private int fortSave;
+	private int refSave;
+	private int dmgMod;
+	private boolean special;
+	private String ability;
 	
 	public int getAc() {
 		return ac;
@@ -23,18 +30,28 @@ public class Monster {
 	}
 
 
-	public Monster(String name, int atkBonus, int dmgDie, int amountDie, int hp, int hitDie, int ac) {
+	public Monster(String name, int intitiativeMod, int atkBonus, int amountDie, int dmgDie, int dmgMod, int ac,   int hitDieAmount, int hitDie,int hpBonus,  int fortSave, int refSave,int willSave, boolean special, String ability) {
 		this.name = name;
 		this.atkBonus = atkBonus;
 		this.dmgDie = dmgDie;
 		this.amountDie = amountDie;
-		this.hp = hp;
+		this.hp = tools.Diceroller.dx(hitDieAmount, hitDie) + hpBonus;
 		this.hitDie = hitDie;
 		this.ac = ac;
-				
-		
+		this.willSave = willSave;
+		this.refSave = refSave;
+		this.fortSave = fortSave;
+		this.initiativeMod = intitiativeMod;
+		initiative = 0;
+		this.dmgMod = dmgMod;
+		this.special = special;
+		this.ability = ability;		
 	}
 
+	
+	public Monster(String name, int intitiativeMod, int atkBonus, int amountDie, int dmgDie, int dmgMod, int ac,   int hitDieAmount, int hitDie,int hpBonus,  int fortSave, int refSave,int willSave) {
+	this(name, intitiativeMod, atkBonus, amountDie, dmgDie, dmgMod, ac, hitDieAmount, hitDie, hpBonus, fortSave, refSave, willSave, false, null);	
+	}
 
 	public String getName() {
 		return name;

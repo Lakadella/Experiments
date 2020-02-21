@@ -102,7 +102,15 @@ public class CharacterDCC {
 			System.out.println("You have " + money + " copper");
 			
 			int randomizer =  Diceroller.d100(1);
-			
+			if (randomizer == 89) {
+				shield = true;
+			}
+			if (randomizer == 83) {
+				armor = armoury.findArmor("Leather");
+			}
+			if (randomizer == 77) {
+				armor = armoury.findArmor("Hide");
+			}
 			job = OccupationDCC.Background(randomizer);
 			
 			String weaponName = OccupationDCC.weaponBackground(randomizer);	
