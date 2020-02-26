@@ -19,7 +19,19 @@ public class Monster {
 	private int dmgMod;
 	private boolean special;
 	private String ability;
+	private int hitDieAmount;
+	private int hpBonus;
 	
+	public int getHitDieAmount() {
+		return hitDieAmount;
+	}
+
+
+	public void setHitDieAmount(int hitDieAmount) {
+		this.hitDieAmount = hitDieAmount;
+	}
+
+
 	public int getAc() {
 		return ac;
 	}
@@ -36,7 +48,9 @@ public class Monster {
 		this.dmgDie = dmgDie;
 		this.amountDie = amountDie;
 		this.hp = tools.Diceroller.dx(hitDieAmount, hitDie) + hpBonus;
+		this.hitDieAmount = hitDieAmount;
 		this.hitDie = hitDie;
+		this.hpBonus = hpBonus;
 		this.ac = ac;
 		this.willSave = willSave;
 		this.refSave = refSave;
@@ -49,9 +63,99 @@ public class Monster {
 	}
 
 	
-	public Monster(String name, int intitiativeMod, int atkBonus, int amountDie, int dmgDie, int dmgMod, int ac,   int hitDieAmount, int hitDie,int hpBonus,  int fortSave, int refSave,int willSave) {
-	this(name, intitiativeMod, atkBonus, amountDie, dmgDie, dmgMod, ac, hitDieAmount, hitDie, hpBonus, fortSave, refSave, willSave, false, null);	
+	public int getHpBonus() {
+		return hpBonus;
 	}
+
+
+	public void setHpBonus(int hpBonus) {
+		this.hpBonus = hpBonus;
+	}
+
+
+	public Monster(String name, int intitiativeMod, int atkBonus, int amountDie, int dmgDie, int dmgMod, int ac,   int hitDieAmount, int hitDie,int hpBonus,  int fortSave, int refSave,int willSave) {
+	this(name, intitiativeMod, atkBonus, amountDie, dmgDie, dmgMod, ac, hitDieAmount, hitDie, hpBonus, fortSave, refSave, willSave, false, "");	
+	}
+
+	public int getInitiativeMod() {
+		return initiativeMod;
+	}
+
+
+	public void setInitiativeMod(int initiativeMod) {
+		this.initiativeMod = initiativeMod;
+	}
+
+
+	public int getInitiative() {
+		return initiative;
+	}
+
+
+	public void setInitiative(int initiative) {
+		this.initiative = initiative;
+	}
+
+
+	public int getWillSave() {
+		return willSave;
+	}
+
+
+	public void setWillSave(int willSave) {
+		this.willSave = willSave;
+	}
+
+
+	public int getFortSave() {
+		return fortSave;
+	}
+
+
+	public void setFortSave(int fortSave) {
+		this.fortSave = fortSave;
+	}
+
+
+	public int getRefSave() {
+		return refSave;
+	}
+
+
+	public void setRefSave(int refSave) {
+		this.refSave = refSave;
+	}
+
+
+	public int getDmgMod() {
+		return dmgMod;
+	}
+
+
+	public void setDmgMod(int dmgMod) {
+		this.dmgMod = dmgMod;
+	}
+
+
+	public boolean isSpecial() {
+		return special;
+	}
+
+
+	public void setSpecial(boolean special) {
+		this.special = special;
+	}
+
+
+	public String getAbility() {
+		return ability;
+	}
+
+
+	public void setAbility(String ability) {
+		this.ability = ability;
+	}
+
 
 	public String getName() {
 		return name;
@@ -116,7 +220,7 @@ public class Monster {
 		int roll = tools.Diceroller.d20(1);
 		
 		if (roll + atkBonus > character.getAc()) {
-			int dmg = (Diceroller.dx(1, amountDie));
+			int dmg = (Diceroller.dx(amountDie, dmgDie) + dmgMod);
 			System.out.println(character.getName() + " take " + dmg + " damage from " + name);
 			return dmg;
 		} else {

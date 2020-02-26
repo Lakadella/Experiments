@@ -10,9 +10,11 @@ public class Mob {
 	public Mob(Monster monster, int amount) {
 		monsters = new Monster[amount];
 		for (int i = 0; i< amount; i++) {
-			monsters[i] = new Monster(monster.getName() + " " + i, monster.getAtkBonus(), monster.getDmgDie(), monster.getAmountDie(), monster.getHp(), monster.getHitDie(), monster.getAc());
+			monsters[i] = new Monster(monster.getName() + " " + i,monster.getInitiativeMod(), monster.getAtkBonus(),monster.getAmountDie(), monster.getDmgDie(), monster.getDmgMod(),  monster.getAc(), monster.getHitDieAmount(),monster.getHitDie(), monster.getHpBonus(),monster.getFortSave(),monster.getRefSave(),monster.getWillSave());
 		}
 		antall = amount;
+		
+		//String name, int intitiativeMod, int atkBonus, int amountDie, int dmgDie, int dmgMod, int ac,   																							 int hitDieAmount, int hitDie,int hpBonus,  int fortSave, int refSave,int willSave
 	}
 
 	public Monster[] getMonsters() {

@@ -10,6 +10,7 @@ public class Encounter {
 	private Monster[] monsters;
 	private int antallmonster;
 	private int antallchars;
+	private int xpValue;
 
 	public Encounter(Party party, Mob mob) {
 		this.party = party;
