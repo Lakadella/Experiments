@@ -11,24 +11,25 @@ public class CharacterDCC {
 	private int per;
 	private int itl;
 	private int lck;
-	private int money;
-	private int hp;
-	private int maxHp;
-	private int strMod;
-	private int agiMod;
+	public int money;
+	public int hp;
+	public int maxHp;
+	public int strMod;
+	public int agiMod;
 	public int staMod;
-	private int perMod;
-	private int itlMod;
-	private int lckMod;
-	private int xp;
-	private String name;
-	private Weapon weapon;
-	private Armor armor;
-	private int ac;
+	public int perMod;
+	public int itlMod;
+	public int lckMod;
+	public int xp;
+	public String name;
+	public Weapon weapon;
+	public Armor armor;
+	public int ac;
 	private String job;
 	private Armoury armoury;
-	private boolean shield;
+	public boolean shield;
 	private int randomizer;
+	public int atkMod;
 
 
 
@@ -53,6 +54,7 @@ public class CharacterDCC {
 			perMod = calculateMod(per);
 			itlMod = calculateMod(itl);
 			lckMod = calculateMod(lck);
+			atkMod = strMod;
 			hp = (Diceroller.d4(1)) + staMod;
 			if(hp <=0) {
 				hp = 1;
@@ -70,9 +72,9 @@ public class CharacterDCC {
 			}
 			
 			
-			public CharacterDCC(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, Armor armor, int ac, boolean shield, int randomizer, String name, int money) {
+			public CharacterDCC(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, Armor armor, int ac, boolean shield, int randomizer, String name, int money,Weapon weapon) {
 				this.str=str; this.agi=agi; this.sta=sta; this.per=per; this.itl=itl; this.lck = lck; this.hp=hp; this.maxHp=maxHP; this.armor=armor; this.shield=shield;this.randomizer=randomizer;
-				this.name=name;this.money=money;
+				this.name=name;this.money=money;this.weapon=weapon;
 				armoury = new Armoury(); armoury = Armoury.makeShop();
 				strMod = calculateMod(str);
 				agiMod = calculateMod(agi);
@@ -117,22 +119,15 @@ public class CharacterDCC {
 			System.out.println("Your AC is " + ac + " " + armor.getName());
 			System.out.println("You have " + money + " copper");
 			
-			
-			if (randomizer == 89) {
-				shield = true;
-				ac++;
-			}
-			if (randomizer == 83) {
-				armor = armoury.findArmor("Leather");
-			}
-			if (randomizer == 77) {
-				armor = armoury.findArmor("Hide");
-			}
+			extra();
+
 			job = OccupationDCC.Background(randomizer);
 			
 			String weaponName = OccupationDCC.weaponBackground(randomizer);	
 			
 			weapon = armoury.findWeapon(weaponName);
+			if (weapon.getName().equals("Shortbow") ||weapon.getName().equals("Longbow")|| weapon.getName().equals("Sling") ) {
+				atkMod = agiMod;}
 			
 			System.out.println(weapon.getName());
 						
@@ -356,8 +351,8 @@ public class CharacterDCC {
 			}
 			
 			public CharacterDCC levelUp() {
-				
-				return null;
+				CharacterDCC ny = new Warrior(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);
+				return ny;
 			}
 			
 			public void equipShield() {
@@ -370,6 +365,16 @@ public class CharacterDCC {
 				if (shield) {
 					shield = false;
 					ac--;
+				}
+			}
+			
+			public void extra() {
+				switch(randomizer) {
+				case 89: shield = true;ac++;break;					
+				case 83:armor = armoury.findArmor("Leather");break;
+				case 77:armor = armoury.findArmor("Hide");break;
+				default: break;
+				
 				}
 			}
 		}

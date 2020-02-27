@@ -6,20 +6,20 @@ public class TestMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub	
-		//CharacterDCC testChar = new CharacterDCC();
+		CharacterDCC testChar = new CharacterDCC();
 		//System.out.println(testChar.getWeapon().getName());
-		Monster antWorker = new Monster("Jungle ape-man",2,4,1,4,3,13, 3,8,0,6,3,1);	
+		//Monster antWorker = new Monster("Firebeetle, giant",-2,3,1,4,2,10,2,8,2,1,0 ,-3);	
 		//testChar.printCharacter();	
 		//Combat testCombat = new Combat(testMonster, testChar);	
 		//testCombat.deathMatch();	
-		Party testparty = new Party(4);		
-		CharacterDCC[] doink = testparty.getGroup();		
-	//	doink[0].getArmoury().listWeapons();		
-		System.out.println(doink[0].getWeapon().getDmgDie());		
-		Mob testmob = new Mob(antWorker, 1);		
+		//Party testparty = new Party(6);		
+		//CharacterDCC[] doink = testparty.getGroup();		
+		//doink[0].getArmoury().listWeapons();		
+		//System.out.println(doink[0].getWeapon().getDmgDie());		
+		//Mob testmob = new Mob(antWorker, 3);		
 		//testmob.listMonsters();		
-		Encounter testEnc = new Encounter(testparty, testmob);		
-		testEnc.melee();
+		//Encounter testEnc = new Encounter(testparty, testmob);		
+		//testEnc.melee();
 		//Monster[] monsters = testmob.getMonsters();
 		//for (Monster m : monsters) {
 			//System.out.println(m.getHp());
@@ -31,7 +31,9 @@ public class TestMain {
 		//}
 		//System.out.println(testChar.getWeapon().getName());
 		//System.out.println(testChar.getWeapon().getDmgDie());	
-		//testparty.listParty();	
+		//testparty.listParty();
+		testChar = testChar.levelUp();
+		System.out.println(testChar.getHp());
 	}
 
 }
