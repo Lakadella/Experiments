@@ -8,18 +8,23 @@ public class TestMain {
 		// TODO Auto-generated method stub	
 		CharacterDCC testChar = new CharacterDCC();
 		//System.out.println(testChar.getWeapon().getName());
-		//Monster antWorker = new Monster("Firebeetle, giant",-2,3,1,4,2,10,2,8,2,1,0 ,-3);	
+		Monster antWorker = new Monster("Firebeetle, giant",-2,3,1,4,2,10,2,8,2,1,0 ,-3);	
 		//testChar.printCharacter();	
 		//Combat testCombat = new Combat(testMonster, testChar);	
 		//testCombat.deathMatch();	
-		//Party testparty = new Party(6);		
-		//CharacterDCC[] doink = testparty.getGroup();		
+		Party testparty = new Party(6);		
+		CharacterDCC[] doink = testparty.getGroup();		
 		//doink[0].getArmoury().listWeapons();		
 		//System.out.println(doink[0].getWeapon().getDmgDie());		
-		//Mob testmob = new Mob(antWorker, 3);		
-		//testmob.listMonsters();		
-		//Encounter testEnc = new Encounter(testparty, testmob);		
-		//testEnc.melee();
+		Mob testmob = new Mob(antWorker, 3);		
+		//testmob.listMonsters();	
+		
+		for(int i = 0; i< doink.length;i++) {
+			doink[i] = doink[i].levelUp();
+			System.out.println(doink[i].getHp());
+		}
+		Encounter testEnc = new Encounter(testparty, testmob);		
+		testEnc.melee();
 		//Monster[] monsters = testmob.getMonsters();
 		//for (Monster m : monsters) {
 			//System.out.println(m.getHp());

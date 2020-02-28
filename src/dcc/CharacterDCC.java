@@ -83,6 +83,21 @@ public class CharacterDCC {
 				itlMod = calculateMod(itl);
 				lckMod = calculateMod(lck);
 			}
+			public CharacterDCC(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, String armor, int ac, boolean shield, int randomizer, String name, int money,String weapon) {
+				this.str=str; this.agi=agi; this.sta=sta; this.per=per; this.itl=itl; this.lck = lck; this.hp=hp; this.maxHp=maxHP;  this.shield=shield;this.randomizer=randomizer;
+				this.name=name;this.money=money;
+				armoury = new Armoury(); armoury = Armoury.makeShop();
+				strMod = calculateMod(str);
+				agiMod = calculateMod(agi);
+				staMod = calculateMod(sta);
+				perMod = calculateMod(per);
+				itlMod = calculateMod(itl);
+				lckMod = calculateMod(lck);
+				armoury = new Armoury();
+				this.armor=armoury.findArmor(armor);
+				this.weapon=armoury.findWeapon(weapon);
+			}
+			
 			
 			public int calculateMod(int stat) {
 				int modifier = 0;
@@ -377,6 +392,23 @@ public class CharacterDCC {
 				
 				}
 			}
+
+			public int getRandomizer() {
+				return randomizer;
+			}
+
+			public void setRandomizer(int randomizer) {
+				this.randomizer = randomizer;
+			}
+
+			public int getAtkMod() {
+				return atkMod;
+			}
+
+			public void setAtkMod(int atkMod) {
+				this.atkMod = atkMod;
+			}
+	
 		}
 
 	

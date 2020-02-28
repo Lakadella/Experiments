@@ -14,8 +14,13 @@ public class Party {
 		for (int i = 0 ; i< number;i++) {
 			group[i] = new CharacterDCC();
 		}
+		members = number;
 	}
 
+	public Party() {
+		this(0);		
+	}
+	
 	public CharacterDCC[] getGroup() {
 		return group;
 	}
@@ -62,6 +67,21 @@ public class Party {
 
 	public void setMembers(int members) {
 		this.members = members;
+	}
+	public void leggTil(CharacterDCC ny) {
+		if (group.length <= members) {
+			utvid();
+		}
+		group[members] = ny;
+		members++;
+		
+	}
+	public void utvid() {
+		CharacterDCC[] ny = new CharacterDCC[members+2];
+		for (int i = 0; i<members;i++) {
+			ny[i] = group[i];
+		}
+		group = ny;
 	}
 	
 	
