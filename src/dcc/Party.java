@@ -9,16 +9,29 @@ public class Party {
 	int partyfunds;
 	int members;
 	
-	public Party(int number) {
-		group = new CharacterDCC[number];
+
+	public Party(int antall) {
+		group = new CharacterDCC[antall];
+		members = 0;
+		partyfunds = 0;
+		weaponstash = new Weapon[10];
+		armorstash = new Armor[10];
+	}
+	
+	
+	public Party() {
+		this(0);
+				
+	}
+	
+	public Party newParty(int number) {
+		Party ny = new Party(number);
+		ny.group = new CharacterDCC[number];
 		for (int i = 0 ; i< number;i++) {
 			group[i] = new CharacterDCC();
 		}
-		members = number;
-	}
-
-	public Party() {
-		this(0);		
+		ny.members = number;
+		return ny;
 	}
 	
 	public CharacterDCC[] getGroup() {
@@ -72,12 +85,16 @@ public class Party {
 		if (group.length <= members) {
 			utvid();
 		}
+		System.out.println("legger til");
 		group[members] = ny;
+		
+		System.out.println(group[members].name);
 		members++;
 		
 	}
 	public void utvid() {
 		CharacterDCC[] ny = new CharacterDCC[members+2];
+		System.out.println("utvid kjorer");
 		for (int i = 0; i<members;i++) {
 			ny[i] = group[i];
 		}

@@ -136,7 +136,7 @@ public class Fil {
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getMoney());
 					utfil.print(SKILLE);
-					utfil.println(tabell[i].getAtkMod());
+					utfil.print(tabell[i].getAtkMod());
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getHp());
 					utfil.print(SKILLE);
@@ -153,7 +153,7 @@ public class Fil {
 					utfil.print(tabell[i].getWeapon().getName());
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getAc());
-					utfil.print(SKILLE);
+					utfil.println(SKILLE);
 					
 				} // for
 					// 4 - Lukk filen

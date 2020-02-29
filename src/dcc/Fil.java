@@ -71,6 +71,7 @@ public class Fil {
 					CharacterDCC karakter = new CharacterDCC(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon);
 					//public CharacterDCC(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, String armor, int ac, boolean shield, int randomizer, String name, int money,String weapon)	
 					gruppe.leggTil(karakter);
+				
 				}
 
 				// 4 - Lukk filen
@@ -136,7 +137,7 @@ public class Fil {
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getMoney());
 					utfil.print(SKILLE);
-					utfil.println(tabell[i].getAtkMod());
+					utfil.print(tabell[i].getAtkMod());
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getHp());
 					utfil.print(SKILLE);
@@ -153,7 +154,7 @@ public class Fil {
 					utfil.print(tabell[i].getWeapon().getName());
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getAc());
-					utfil.print(SKILLE);
+					utfil.println(SKILLE);
 					
 				} // for
 					// 4 - Lukk filen

@@ -66,7 +66,7 @@ public class OccupationDCC {
 			case 7 : job = "Beekeeper"; weapon = "Staff"; goods = "Jar of honey"; break;
 			case 8 : job = "Blacksmith"; weapon = "Club"; goods = "Steel tongs"; break;
 			case 9 : job = "Butcher"; weapon = "Handaxe"; goods = "Side of beef"; break;
-			case 10 : job = "Caravan guard "; weapon = "Short sword "; goods = "Linen, 1 yard"; break;
+			case 10 : job = "Caravan guard "; weapon = "Short Sword "; goods = "Linen, 1 yard"; break;
 			case 11 : job = "Cheesemaker"; weapon = "Staff"; goods = "Stinky cheese"; break;
 			case 12 : job = "Cobbler "; weapon = "Dagger"; goods = "Shoehorn"; break;
 			case 13 : job = "Confidence artist"; weapon = "Dagger "; goods = "Quality cloak"; break;

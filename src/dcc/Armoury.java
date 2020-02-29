@@ -8,7 +8,7 @@ public class Armoury {
 	private int weaponCount;
 
 	public Armoury() {
-		armor = new Armor[9];
+		armor = new Armor[10];
 		weapon = new Weapon[23];
 		armorCount = 0;
 		weaponCount = 0;
@@ -116,7 +116,8 @@ public class Armoury {
 		temp.addWeapon(twohander);
 		Weapon warhammer = new Weapon("Warhammer", "warhammer", 8, "", 500);
 		temp.addWeapon(warhammer);
-
+		Armor noArmor = new Armor("No Armor", "No type", 0, 0, 0);
+		temp.addArmor(noArmor);
 		return temp;
 	}
 

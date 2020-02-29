@@ -93,7 +93,6 @@ public class CharacterDCC {
 				perMod = calculateMod(per);
 				itlMod = calculateMod(itl);
 				lckMod = calculateMod(lck);
-				armoury = new Armoury();
 				this.armor=armoury.findArmor(armor);
 				this.weapon=armoury.findWeapon(weapon);
 			}
@@ -407,6 +406,10 @@ public class CharacterDCC {
 
 			public void setAtkMod(int atkMod) {
 				this.atkMod = atkMod;
+			}
+			
+			public void save() {
+				
 			}
 	
 		}
