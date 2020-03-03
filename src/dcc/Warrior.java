@@ -16,7 +16,7 @@ public class Warrior extends CharacterDCC{
 		super(str, agi,sta, per,itl, lck, hp, maxHP, armor, ac, shield, randomizer, name, money,weapon);
 		
 		super.gainHp(12);
-		super.setHp  (super.getMaxHp());
+		super.setHp(super.getMaxHp());
 		lvl = 1;
 		deedDie=3;
 		this.setWeapon(weapon);
@@ -26,7 +26,16 @@ public class Warrior extends CharacterDCC{
 		
 		
 		}
-	
+	public Warrior(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, Armor armor, int ac, boolean shield, int randomizer, String name, int money,Weapon weapon,int xp, int atkMod, int lvl) {
+		super(str, agi,sta, per,itl, lck, hp, maxHP, armor, ac, shield, randomizer, name, money,weapon);
+		this.lvl = lvl-1;
+		this.xp = xp;
+		this.setWeapon(weapon);
+		levelUp();
+		this.hp = maxHp;
+		this.maxHp = maxHP;
+		occupation = "Warrior";
+	}
 	@Override
 	public int attack(Monster monster) {
 		int roll = tools.Diceroller.d20(1);		

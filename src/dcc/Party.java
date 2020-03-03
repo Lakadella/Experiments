@@ -24,11 +24,11 @@ public class Party {
 				
 	}
 	
-	public Party newParty(int number) {
+	public static Party newParty(int number) {
 		Party ny = new Party(number);
 		ny.group = new CharacterDCC[number];
 		for (int i = 0 ; i< number;i++) {
-			group[i] = new CharacterDCC();
+			ny.group[i] = new CharacterDCC();
 		}
 		ny.members = number;
 		return ny;
@@ -101,5 +101,9 @@ public class Party {
 		group = ny;
 	}
 	
-	
+	public void levelUpLvl0() {
+		for (int i = 0; i<members;i++) {
+			group[i] = group[i].levelUpFunnel();
+		}
+	}
 }

@@ -429,10 +429,10 @@ public class CharacterDCC {
 					int choice = Integer.parseInt(JOptionPane.showInputDialog("your choice"));
 					
 					switch (choice) {
-					case 1 : ny = new Cleric(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);
-					case 2 : ny = new Thief(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);
-					case 3 : ny = new Warrior(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);	
-					case 4 : ny = new Wizard(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);	
+					case 1 : ny = new Cleric(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);break;
+					case 2 : ny = new Thief(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);break;
+					case 3 : ny = new Warrior(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);break;	
+					case 4 : ny = new Wizard(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);break;	
 					}
 				}
 				

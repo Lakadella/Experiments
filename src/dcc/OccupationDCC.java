@@ -69,7 +69,7 @@ public class OccupationDCC {
 			case 10 : job = "Caravan guard "; weapon = "Short Sword "; goods = "Linen, 1 yard"; break;
 			case 11 : job = "Cheesemaker"; weapon = "Staff"; goods = "Stinky cheese"; break;
 			case 12 : job = "Cobbler "; weapon = "Dagger"; goods = "Shoehorn"; break;
-			case 13 : job = "Confidence artist"; weapon = "Dagger "; goods = "Quality cloak"; break;
+			case 13 : job = "Confidence artist"; weapon = "Dagger"; goods = "Quality cloak"; break;
 			case 14 : job = "Cooper"; weapon = "Club"; goods = "Barrel"; break;
 			case 15 : job = "Costermonger"; weapon = "Dagger"; goods = "Fruit"; break;
 			case 16 : job = "Cutpurse"; weapon = "Dagger"; goods = "Small chest"; break;
@@ -85,7 +85,7 @@ public class OccupationDCC {
 			case 26 : job = "Dwarven Rat-catcher"; weapon = "Club"; goods = "Net"; break;
 			case 27 : 
 			case 28 : job = "Dwarven Stone-Mason"; weapon = "Club"; goods = "Fine Stone, 10lbs"; break;
-			case 29 : job = "Elven artisan "; weapon = "Staff "; goods = "Clay, 1 lb."; break;
+			case 29 : job = "Elven artisan "; weapon = "Staff"; goods = "Clay, 1 lb."; break;
 			case 30 : job = "Elven Barrister"; weapon = "Dart"; goods = "Book"; break;
 			case 31 : job = "Elven Chandler"; weapon = "Dagger"; goods = "Candles, 20"; break;
 			case 32 : job = "Elven Falconer"; weapon = "Dagger"; goods = "Falcon"; break;

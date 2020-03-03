@@ -22,7 +22,7 @@ public class Fil {
 		 * @return Referansen til Film-arkivet
 		 * @throws java.io.IOException
 		 */
-		public static Party lesFraFilLvl0(String filnavn)  {
+		public static Party lesFraFil(String filnavn)  {
 			Party gruppe = null;
 				try {
 				/*  1 - FileReader
@@ -50,7 +50,7 @@ public class Fil {
 				for (int i = 0; i < n; i++) {
 					String post = innfil.readLine();
 					String[] felt = post.split(SKILLE);
-					String name = felt[0];
+					String occupation = felt[0];					
 					int str = Integer.parseInt(felt[1]);
 					int agi = Integer.parseInt(felt[2]);
 					int sta = Integer.parseInt(felt[3]);
@@ -61,16 +61,35 @@ public class Fil {
 					int atkMod = Integer.parseInt(felt[8]);
 					int hp = Integer.parseInt(felt[9]);
 					int maxHp = Integer.parseInt(felt[10]);
-					String armor = felt[11];
+					String armorString = felt[11];
 					int xp = Integer.parseInt(felt[12]);
 					boolean shield = Boolean.parseBoolean(felt[13]);
 					int randomizer = Integer.parseInt(felt[14]);
-					String weapon = felt[15];
+					String weaponString = felt[15];
 					int ac = Integer.parseInt(felt[16]);
+					String name = felt[17];
+					int lvl = Integer.parseInt(felt[18]);
+					
+					CharacterDCC ny = null;
+					Armoury armoury = Armoury.makeShop(); 
+					Weapon weapon = armoury.findWeapon(weaponString);
+					Armor armor = armoury.findArmor(armorString);
+					
+					switch(occupation) {
+					case "Cleric" : ny = new Cleric(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon,xp,atkMod,lvl); ny.setMaxHp(maxHp);ny.setHp(hp);break;
+					case "Thief" : ny = new Thief(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon,xp,atkMod,lvl);ny.setMaxHp(maxHp);ny.setHp(hp);break;
+					case "Warrior" : ny = new Warrior(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon,xp,atkMod,lvl);	ny.setMaxHp(maxHp);ny.setHp(hp);break; 
+					case "Wizard" : ny = new Wizard(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon,xp,atkMod,lvl);ny.setMaxHp(maxHp);ny.setHp(hp);break;
+					case "Halfling" : ny = new Halfling(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon,xp,atkMod,lvl);ny.setMaxHp(maxHp);ny.setHp(hp);break;
+					case "Elf" : ny = new Elf(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon,xp,atkMod,lvl);ny.setMaxHp(maxHp);ny.setHp(hp);break;
+					case "Dwarf" : ny = new Dwarf(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon,xp,atkMod,lvl); ny.setMaxHp(maxHp);ny.setHp(hp);break;
+					//case "lvl0" : ny = new CharacterDCC(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon,xp,atkMod,lvl); ny.setMaxHp(maxHp);ny.setHp(hp);break;
+					default : System.out.println("Her var det noe som gikk galt" + occupation);
+					}
 
-					CharacterDCC karakter = new CharacterDCC(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon);
+					
 					//public CharacterDCC(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, String armor, int ac, boolean shield, int randomizer, String name, int money,String weapon)	
-					gruppe.leggTil(karakter);
+					gruppe.leggTil(ny);
 				
 				}
 
@@ -92,7 +111,7 @@ public class Fil {
 		
 			
 		
-		public static void skrivTilFilLvl0(Party gruppe, String filnavn)  {
+		public static void skrivTilFil(Party gruppe, String filnavn)  {
 			try {
 				/* 1 - FileWriter
 				 *     Definerer et FileWriter-objekt som åpner filen.
@@ -123,8 +142,7 @@ public class Fil {
 					// 3 - Skriver postene, felt for felt
 					utfil.print(tabell[i].getOccupation());
 					utfil.print(SKILLE);					
-					utfil.print(tabell[i].getName());
-					utfil.print(SKILLE);
+					
 					utfil.print(tabell[i].getStr());
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getAgi());
@@ -156,6 +174,10 @@ public class Fil {
 					utfil.print(tabell[i].getWeapon().getName());
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getAc());
+					utfil.print(SKILLE);
+					utfil.print(tabell[i].getName());
+					utfil.print(SKILLE);
+					utfil.print(tabell[i].getLvl());
 					utfil.println(SKILLE);
 					
 				} // for
