@@ -121,6 +121,8 @@ public class Fil {
 				CharacterDCC[] tabell = gruppe.getGroup();
 				for (int i = 0; i < antall; i++) {
 					// 3 - Skriver postene, felt for felt
+					utfil.print(tabell[i].getOccupation());
+					utfil.print(SKILLE);					
 					utfil.print(tabell[i].getName());
 					utfil.print(SKILLE);
 					utfil.print(tabell[i].getStr());

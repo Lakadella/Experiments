@@ -31,6 +31,10 @@ public class CharacterDCC {
 	private int randomizer;
 	public int atkMod;
 	public int lvl;
+	public String occupation;
+	public int fortSave;
+	public int refSave;
+	public int willSave;
 
 
 
@@ -71,9 +75,53 @@ public class CharacterDCC {
 			printCharacter();
 			name = JOptionPane.showInputDialog("Navn");	
 			lvl =0;
+			occupation = "lvl0";
+			willSave = perMod;
+			fortSave = staMod;
+			refSave = agiMod;
 			}
 			
 			
+			public int getLvl() {
+				return lvl;
+			}
+
+			public void setLvl(int lvl) {
+				this.lvl = lvl;
+			}
+
+			public String getOccupation() {
+				return occupation;
+			}
+
+			public void setOccupation(String occupation) {
+				this.occupation = occupation;
+			}
+
+			public int getFortSave() {
+				return fortSave;
+			}
+
+			public void setFortSave(int fortSave) {
+				this.fortSave = fortSave;
+			}
+
+			public int getRefSave() {
+				return refSave;
+			}
+
+			public void setRefSave(int refSave) {
+				this.refSave = refSave;
+			}
+
+			public int getWillSave() {
+				return willSave;
+			}
+
+			public void setWillSave(int willSave) {
+				this.willSave = willSave;
+			}
+
 			public CharacterDCC(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, Armor armor, int ac, boolean shield, int randomizer, String name, int money,Weapon weapon) {
 				this.str=str; this.agi=agi; this.sta=sta; this.per=per; this.itl=itl; this.lck = lck; this.hp=hp; this.maxHp=maxHP; this.armor=armor; this.shield=shield;this.randomizer=randomizer;
 				this.name=name;this.money=money;this.weapon=weapon;
@@ -367,15 +415,28 @@ public class CharacterDCC {
 			}
 			
 			public CharacterDCC levelUpFunnel() {
-				if (randomizer >= 19 || randomizer <= 28) {
-					//Dwarf
-				}if (randomizer >=29 || randomizer <= 38) {
-					//Elf
-				}if (randomizer >= 55 || randomizer <= 64) {
-					//halfling
+				CharacterDCC ny = null;
+				if (randomizer >= 19 && randomizer <= 28) {
+					ny = new Dwarf(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon); 
+				}if (randomizer >=29 && randomizer <= 38) {
+					ny = new Elf(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon);
+				}if (randomizer >= 55 && randomizer <= 64) {
+					ny = new Halfling(str,agi,sta,per,itl,lck,hp,maxHp,armor,ac,shield,randomizer,name,money,weapon);
+				}
+				if (ny==null) {
+					System.out.println("What class do you want to be? 1.Cleric 2.Thief 3.Warrior 4.Wizard");
+					System.out.println("Str " + str + " agi " + agi + " sta " + sta + " per " + per + " itl " + itl + " lck " + lck + " and hp "+hp);
+					int choice = Integer.parseInt(JOptionPane.showInputDialog("your choice"));
+					
+					switch (choice) {
+					case 1 : ny = new Cleric(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);
+					case 2 : ny = new Thief(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);
+					case 3 : ny = new Warrior(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);	
+					case 4 : ny = new Wizard(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);	
+					}
 				}
 				
-				CharacterDCC ny = new Warrior(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);
+				
 				return ny;
 			}
 			public void levelUp() {
@@ -432,7 +493,7 @@ public class CharacterDCC {
 					armor = wanted;
 					money = money - wanted.getPrice();	
 					ac = ac + wanted.getAcBonus();
-					System.out.println("You bought " + wanted.getName());
+					System.out.println("You bought " + wanted.getName() + " armor");
 				}else {
 					System.out.println("You can not afford " + wanted.getName());
 				}
@@ -443,12 +504,20 @@ public class CharacterDCC {
 				Weapon wanted = armoury.findWeapon(ny);
 				if (money >= wanted.getPrice()) {
 					weapon = wanted;
-					money = money - wanted.getPrice();					
+					money = money - wanted.getPrice();	
+					System.out.println("You bought a " + wanted.getName());
 				}else {
 					System.out.println("You can not afford " + wanted.getName());
 				}
 			}
 			
+			public void gainHp(int dice) {
+				int roll = Diceroller.dx(1, dice) + staMod;
+				if (roll < 1) {
+					roll = 1;
+				}
+				maxHp = maxHp + roll;
+			}
 		}
 
 	

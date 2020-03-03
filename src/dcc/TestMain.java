@@ -44,6 +44,7 @@ public class TestMain {
 		testChar = testChar.levelUpFunnel();
 		testChar.setMoney(10000);
 		testChar.buyArmor();
+		testChar.buyWeapon();
 		System.out.println(testChar.toString());
 		testChar.levelUp();
 		System.out.println(testChar.toString());

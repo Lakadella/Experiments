@@ -14,13 +14,15 @@ public class Warrior extends CharacterDCC{
 	
 	public Warrior(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, Armor armor, int ac, boolean shield, int randomizer, String name, int money,Weapon weapon) {
 		super(str, agi,sta, per,itl, lck, hp, maxHP, armor, ac, shield, randomizer, name, money,weapon);
-		super.setMaxHp( maxHP + Diceroller.d12(1) + staMod);
+		
+		super.gainHp(12);
 		super.setHp  (super.getMaxHp());
 		lvl = 1;
 		deedDie=3;
 		this.setWeapon(weapon);
 		this.deedBonus = 0;
 		critrange = 2;
+		occupation = "Warrior";
 		
 		
 		}
@@ -29,7 +31,7 @@ public class Warrior extends CharacterDCC{
 	public int attack(Monster monster) {
 		int roll = tools.Diceroller.d20(1);		
 		if (roll > 20-critrange) {
-			int critDmg = (Diceroller.dx(2, weapon.getDmgDie()) + (strMod *2));
+			int critDmg = (Diceroller.dx(2, weapon.getDmgDie()) + (strMod *2) + ((Diceroller.dx(deedDie, 1) + deedBonus)*2 ));
 			System.out.println(name +  " do " + critDmg + " damage to " + monster.getName() + " with crit from  " + weapon.getName());
 			return critDmg;
 		}
@@ -37,7 +39,7 @@ public class Warrior extends CharacterDCC{
 			atkMod = strMod + lckMod;
 		}
 		if (roll + atkMod + (Diceroller.dx(1, deedDie)+deedBonus) > monster.getAc()) {
-			int dmg = (Diceroller.dx(1, weapon.getDmgDie())) + strMod;
+			int dmg = (Diceroller.dx(1, weapon.getDmgDie())) + strMod + Diceroller.dx(deedDie, 1) + deedBonus;
 			if (dmg <= 0) {
 				dmg = 1;
 			}
@@ -50,7 +52,7 @@ public class Warrior extends CharacterDCC{
 	}
 	@Override
 	public void levelUp() {
-		maxHp = maxHp + Diceroller.d12(1) + staMod;
+		super.gainHp(12);
 		lvl++;
 		switch (lvl) {
 		case 2: deedDie=4;break;
