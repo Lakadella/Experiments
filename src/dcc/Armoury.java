@@ -18,7 +18,7 @@ public class Armoury {
 	public Armor findArmor(String name) {
 		Armor noArmor = new Armor("No Armor", "No type", 0, 0, 0);
 		for (Armor a : armor) {
-			if (a.getName() == name) {
+			if (a.getName().equals(name)) {
 				return a;
 			}
 		}

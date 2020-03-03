@@ -8,7 +8,7 @@ public class TestMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub	
-		//CharacterDCC testChar = new CharacterDCC();
+		CharacterDCC testChar = new CharacterDCC();
 		//System.out.println(testChar.getWeapon().getName());
 		//Monster antWorker = new Monster("Firebeetle, giant",-2,3,1,4,2,10,2,8,2,1,0 ,-3);	
 		//testChar.printCharacter();	
@@ -41,12 +41,23 @@ public class TestMain {
 		//System.out.println(testChar.getWeapon().getName());
 		//System.out.println(testChar.getWeapon().getDmgDie());	
 		//testparty.listParty();
-		//testChar = testChar.levelUp();
+		testChar = testChar.levelUpFunnel();
+		testChar.setMoney(10000);
+		testChar.buyArmor();
+		System.out.println(testChar.toString());
+		testChar.levelUp();
+		System.out.println(testChar.toString());
+		testChar.levelUp();
+		System.out.println(testChar.toString());
+		testChar.levelUp();
+		System.out.println(testChar.toString());
+		testChar.levelUp();
+		System.out.println(testChar.toString());
 		//System.out.println(testChar.getHp());
-		Party nytt = Fil.lesFraFilLvl0("testrpg");
-		CharacterDCC[] doink = nytt.getGroup();	
-		System.out.println(doink.length);
-		System.out.println(doink[0].getName());
+		//Party nytt = Fil.lesFraFilLvl0("testrpg");
+		//CharacterDCC[] doink = nytt.getGroup();	
+		//System.out.println(doink.length);
+		//System.out.println(doink[0].getName());
 	}
 
 }

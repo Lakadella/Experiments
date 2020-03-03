@@ -1,10 +1,12 @@
 package dcc;
 
+import javax.swing.JOptionPane;
+
 import tools.Diceroller;
 
 public class Warrior extends CharacterDCC{
 	
-	private int lvl;
+	
 	private int deedDie;
 	public String chosenWeapon;
 	private int deedBonus;
@@ -18,7 +20,8 @@ public class Warrior extends CharacterDCC{
 		deedDie=3;
 		this.setWeapon(weapon);
 		this.deedBonus = 0;
-		int critrange = 2;
+		critrange = 2;
+		
 		
 		}
 	
@@ -45,8 +48,8 @@ public class Warrior extends CharacterDCC{
 			return 0;
 		}
 	}
-	
-	public void levelUpWarrior() {
+	@Override
+	public void levelUp() {
 		maxHp = maxHp + Diceroller.d12(1) + staMod;
 		lvl++;
 		switch (lvl) {
@@ -63,4 +66,9 @@ public class Warrior extends CharacterDCC{
 		}
 		
 	}
+	public String toString() {
+		return name + " the Warrior , lvl " + lvl + " wielding a " + weapon.getName() + " wearing " + armor.getName() + " with " +maxHp + " hp ";
+	}
+
+	
 }

@@ -26,10 +26,11 @@ public class CharacterDCC {
 	public Armor armor;
 	public int ac;
 	private String job;
-	private Armoury armoury;
+	public Armoury armoury;
 	public boolean shield;
 	private int randomizer;
 	public int atkMod;
+	public int lvl;
 
 
 
@@ -68,7 +69,8 @@ public class CharacterDCC {
 			armoury = Armoury.makeShop();
 			randomizer =  Diceroller.d100(1);
 			printCharacter();
-			name = JOptionPane.showInputDialog("Navn");		
+			name = JOptionPane.showInputDialog("Navn");	
+			lvl =0;
 			}
 			
 			
@@ -364,9 +366,20 @@ public class CharacterDCC {
 				}
 			}
 			
-			public CharacterDCC levelUp() {
+			public CharacterDCC levelUpFunnel() {
+				if (randomizer >= 19 || randomizer <= 28) {
+					//Dwarf
+				}if (randomizer >=29 || randomizer <= 38) {
+					//Elf
+				}if (randomizer >= 55 || randomizer <= 64) {
+					//halfling
+				}
+				
 				CharacterDCC ny = new Warrior(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);
 				return ny;
+			}
+			public void levelUp() {
+				
 			}
 			
 			public void equipShield() {
@@ -411,7 +424,31 @@ public class CharacterDCC {
 			public void save() {
 				
 			}
+			
+			public void buyArmor() {
+				String ny = JOptionPane.showInputDialog("What armor do you want?" );
+				Armor wanted = armoury.findArmor(ny);
+				if (money >= wanted.getPrice()) {
+					armor = wanted;
+					money = money - wanted.getPrice();	
+					ac = ac + wanted.getAcBonus();
+					System.out.println("You bought " + wanted.getName());
+				}else {
+					System.out.println("You can not afford " + wanted.getName());
+				}
+			}
 	
+			public void buyWeapon() {
+				String ny = JOptionPane.showInputDialog("What weapon do you want?" );
+				Weapon wanted = armoury.findWeapon(ny);
+				if (money >= wanted.getPrice()) {
+					weapon = wanted;
+					money = money - wanted.getPrice();					
+				}else {
+					System.out.println("You can not afford " + wanted.getName());
+				}
+			}
+			
 		}
 
 	
