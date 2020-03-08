@@ -36,7 +36,7 @@ public class Bestiary {
 		return null;
 	}
 	
-	public Bestiary populate() {
+	public static Bestiary populate() {
 		Bestiary temp = new Bestiary(45);
 		Monster android = new Monster("Android",-2,2,1,8,0,18,3,8,12,5,-2,6,true,"Regeneration2");
 		temp.addMonster(android);

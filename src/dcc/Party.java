@@ -106,4 +106,11 @@ public class Party {
 			group[i] = group[i].levelUpFunnel();
 		}
 	}
-}
+	public void levelUpParty(){
+		for (int i = 0; i<members;i++) {
+			 group[i].levelUp();
+		}
+	}
+
+		}
+

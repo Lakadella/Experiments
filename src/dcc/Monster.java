@@ -11,7 +11,7 @@ public class Monster {
 	private int hp;
 	private int hitDie;
 	private int ac;
-	private int initiativeMod;
+	public int initiativeMod;
 	private int initiative;
 	private int willSave;
 	private int fortSave;

@@ -23,6 +23,10 @@ public class Dwarf extends CharacterDCC{
 	}
 	public Dwarf(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, Armor armor, int ac, boolean shield, int randomizer, String name, int money,Weapon weapon,int xp, int atkMod,int lvl) {
 		super(str, agi,sta, per,itl, lck, hp, maxHP, armor, ac, shield, randomizer, name, money,weapon);
+		this.lvl = lvl-1;
+		levelUp();
+		this.maxHp = maxHP;
+		this.hp = hp;
 		}
 	
 	@Override
@@ -63,5 +67,22 @@ public class Dwarf extends CharacterDCC{
 }
 	public String toString() {
 		return name + " the Dwarf , lvl " + lvl + " wielding a " + weapon.getName() + " wearing " + armor.getName() + " with " +maxHp + " hp ";
+	}
+	
+	public void levelUp() {
+		super.gainHp(10);
+		lvl++;
+		switch (lvl) {
+		case 2: deedDie=4;break;
+		case 3: deedDie=5;break;
+		case 4: deedDie=6;break;
+		case 5: deedDie=7;critrange = 3;break;
+		case 6: deedDie=8;break;
+		case 7: deedDie=10; deedBonus = 1;break;
+		case 8: deedBonus = 2; break;
+		case 9: deedBonus = 3; critrange = 4;break;
+		case 10: deedBonus = 4; break;
+		default: break;
+	}
 	}
 }

@@ -1,6 +1,8 @@
 package dcc;
 
 import tools.*;
+import java.io.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 public class CharacterDCC {
@@ -35,6 +37,8 @@ public class CharacterDCC {
 	public int fortSave;
 	public int refSave;
 	public int willSave;
+	public int initiativeMod;
+	public Scanner tastatur = new Scanner(System.in);
 
 
 
@@ -73,7 +77,8 @@ public class CharacterDCC {
 			armoury = Armoury.makeShop();
 			randomizer =  Diceroller.d100(1);
 			printCharacter();
-			name = JOptionPane.showInputDialog("Navn");	
+			System.out.println("Navn");
+			name = tastatur.nextLine();
 			lvl =0;
 			occupation = "lvl0";
 			willSave = perMod;
@@ -446,13 +451,15 @@ public class CharacterDCC {
 			public void equipShield() {
 				if (!shield) {
 					shield= true;
-					ac++;				
+					ac++;
+					System.out.println(name + " equips a shield");
 				}
 			}
 			public void dropShield() {
 				if (shield) {
 					shield = false;
 					ac--;
+					System.out.println(name + " drops the shield");
 				}
 			}
 			
@@ -508,6 +515,15 @@ public class CharacterDCC {
 					System.out.println("You bought a " + wanted.getName());
 				}else {
 					System.out.println("You can not afford " + wanted.getName());
+				}
+			}
+			
+			public void buyShield() {
+				if (money > 1000) {
+					equipShield();
+					money = money - 1000;
+				}else {
+					System.out.println("You can not afford a shield");
 				}
 			}
 			

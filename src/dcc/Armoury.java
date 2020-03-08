@@ -52,9 +52,9 @@ public class Armoury {
 
 	public static Armoury makeShop() {
 		Armoury temp = new Armoury();
-		Armor leather = new Armor("Leather", "Leather", 2, 20, 1);
+		Armor leather = new Armor("Leather", "Leather", 2, 2000, 1);
 		temp.addArmor(leather);
-		Armor padded = new Armor("Padded", "Padded", 1, 5, 0);
+		Armor padded = new Armor("Padded", "Padded", 1, 500, 0);
 		temp.addArmor(padded);
 		Armor studded = new Armor("Studded leather", "Studded leather", 3, 4500, 2);
 		temp.addArmor(studded);
