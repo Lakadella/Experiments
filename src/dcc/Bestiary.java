@@ -74,6 +74,8 @@ public class Bestiary {
 		temp.addMonster(flyingBeetle);
 		temp.addMonster(spinyBeetle);
 		temp.addMonster(armoredBeetle);
+		Monster goblin = new Monster("Goblin", -1,0,1,6, -1 ,12, 1,6,-1,-2,1, -2);
+		temp.addMonster(goblin);
 		
 		
 		/*String name, 

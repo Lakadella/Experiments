@@ -431,7 +431,7 @@ public class CharacterDCC {
 				if (ny==null) {
 					System.out.println("What class do you want to be? 1.Cleric 2.Thief 3.Warrior 4.Wizard");
 					System.out.println("Str " + str + " agi " + agi + " sta " + sta + " per " + per + " itl " + itl + " lck " + lck + " and hp "+hp);
-					int choice = Integer.parseInt(JOptionPane.showInputDialog("Your choice"));
+					int choice = tastatur.nextInt();
 					
 					switch (choice) {
 					case 1 : ny = new Cleric(str,  agi, sta,  per, itl,  lck,  hp,  maxHp,  armor,  ac, shield,  randomizer,  name,  money, weapon);break;

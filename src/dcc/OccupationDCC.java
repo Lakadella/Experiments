@@ -132,7 +132,7 @@ public class OccupationDCC {
 			case 73 : job = "Indentured servant"; weapon = "Staff"; goods = "Locket"; break;
 			case 74 : job = "Jester"; weapon = "Dart"; goods = "Silk Clothes"; break;
 			case 75 : job = "Jeweler"; weapon = "Dagger"; goods = "Gem worth 20 gp"; break;
-			case 76 : job = "Locksmith"; weapon = " Dagger"; goods = "Fine tools"; break;
+			case 76 : job = "Locksmith"; weapon = "Dagger"; goods = "Fine tools"; break;
 			case 77 : job = "Mercenary"; weapon = "Longsword"; goods = "Hide armor"; break;
 			case 78 : job = "Miller/Baker"; weapon = "Club"; goods = "Flour, 1 lb"; break;
 			case 79 : job = "Minstrel"; weapon = "Dagger"; goods = "Ukulele"; break;

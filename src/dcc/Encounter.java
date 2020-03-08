@@ -62,17 +62,18 @@ public class Encounter {
 		for (int i = indeks; i < antallmonster - 1; i++) {
 			monsters[i] = monsters[i + 1];
 		}
-		// monsters[antallmonster] = null;
+		monsters[antallmonster-1] = null;
 		antallmonster--;
 	}
 
 	public void characterDeath(int indeks) {
 		System.out.println(group[indeks].getName() + " is dead");
 		for (int i = indeks; i < antallchars - 1; i++) {
-			group[i] = group[i + 1];
+			group[i] = group[i + 1];			
 		}
-		// group[antallchars] = null;
+		group[antallchars-1] = null;
 		antallchars--;
+		party.setMembers(party.getMembers() -1);
 	}
 
 	public void melee2(Scanner tastatur) {
@@ -87,13 +88,13 @@ public class Encounter {
 
 		while (antallchars > 0 && antallmonster > 0 && !alldead && !run) {
 			for (int k = 0; k < party.members; k++) {
-				if (initiative[k] > monsterInt) {
+				if (group[k] != null && initiative[k] > monsterInt) {
 					combatAction(tastatur, group[k]);
 				}
 			}
 			monstersAttack();
 			for (int k = 0; k < party.members; k++) {
-				if (initiative[k] < monsterInt) {
+				if (group[k] != null && initiative[k] < monsterInt ) {
 					combatAction(tastatur, group[k]);
 				}
 			}
@@ -109,9 +110,11 @@ public class Encounter {
 			mob.listMonsters();
 			System.out.println("Who do you want to attack?");
 			int target = Integer.parseInt(tastatur.nextLine());
-			int dmg = person.attack(monsters[target]); monsters[target].setHp(monsters[target].getHp() - dmg);
+			int dmg = person.attack(monsters[target]);
+			if(monsters[target] != null) {
+			monsters[target].setHp(monsters[target].getHp() - dmg);
 			if (monsters[target].getHp() <= 0) {
-				monsterDeath(target);}
+				monsterDeath(target);}}
 			break;
 		case 2:
 			System.out.println(person.getName() + " tries to run");
@@ -127,6 +130,7 @@ public class Encounter {
 			int tilf2 = (Diceroller.dx(1, antallchars)) - 1;
 			if (monsters[j] != null && group[tilf2] != null) {
 				int dmg = monsters[j].attack(group[tilf2]);
+				
 				group[tilf2].setHp(group[tilf2].getHp() - dmg);
 				if (group[tilf2].getHp() <= 0) {
 					characterDeath(tilf2);

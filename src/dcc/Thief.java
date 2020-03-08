@@ -7,6 +7,7 @@ public class Thief extends CharacterDCC{
 		super(str, agi,sta, per,itl, lck, hp, maxHP, armor, ac, shield, randomizer, name, money,weapon);
 		occupation = "Thief";
 		gainHp(6);
+		lvl = 1;
 	}
 	
 	public Thief(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, Armor armor, int ac, boolean shield, int randomizer, String name, int money,Weapon weapon,int xp, int atkMod,int lvl) {

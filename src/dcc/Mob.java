@@ -27,6 +27,7 @@ public class Mob {
 		
 	public void listMonsters() {
 		for (Monster m : monsters) {
+			if(m!=null)
 			System.out.println(m.getName());
 		}
 	}

@@ -221,6 +221,7 @@ public class Monster {
 		
 		if (roll + atkBonus > character.getAc()) {
 			int dmg = (Diceroller.dx(amountDie, dmgDie) + dmgMod);
+			if(dmg < 1) {dmg=1;}
 			System.out.println(character.getName() + " take " + dmg + " damage from " + name);
 			return dmg;
 		} else {
