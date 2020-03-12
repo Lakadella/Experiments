@@ -53,4 +53,12 @@ public class Mob {
 			antall --; 
 		}
 	}
+	public void monsterDeath(int indeks) {
+		System.out.println(monsters[indeks].getName() + " is dead");
+		for (int i = indeks; i < antall - 1; i++) {
+			monsters[i] = monsters[i + 1];
+		}
+		monsters[antall-1] = null;
+		antall--;
+	}
 }

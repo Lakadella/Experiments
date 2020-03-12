@@ -15,6 +15,8 @@ public class Encounter {
 	private int antallchars;
 	private int xpValue;
 	public Scanner tastatur;
+	public boolean visited;
+	public boolean cleared;
 
 	public Encounter(Party party, Mob mob) {
 		this.party = party;
@@ -24,7 +26,19 @@ public class Encounter {
 		monsters = mob.getMonsters();
 		antallmonster = monsters.length;
 		antallchars = group.length;
+		visited = false;
+		cleared = false;
 	}
+	
+	public Encounter(Party party) {
+		this.party=party;
+		group = party.getGroup();
+		visited = false;
+		cleared = false;
+		
+	}
+	
+	
 
 	public void melee() {
 		boolean alldead = false;
@@ -88,14 +102,14 @@ public class Encounter {
 
 		while (antallchars > 0 && antallmonster > 0 && !alldead && !run) {
 			for (int k = 0; k < party.members; k++) {
-				if (group[k] != null && initiative[k] > monsterInt) {
-					combatAction(tastatur, group[k]);
+				if (group[k] != null && initiative[k] >= monsterInt) {
+					group[k].combatAction(tastatur, mob);
 				}
 			}
 			monstersAttack();
 			for (int k = 0; k < party.members; k++) {
 				if (group[k] != null && initiative[k] < monsterInt ) {
-					combatAction(tastatur, group[k]);
+					group[k].combatAction(tastatur, mob);
 				}
 			}
 		}
@@ -137,6 +151,16 @@ public class Encounter {
 				}
 			}
 		}
+	}
+	
+	public void randomTrapRef(int CR, int dmg) {
+		int dmg2 = dmg;
+		int tilf = Diceroller.dx(1,party.getMembers()-1);
+		if (group[tilf].reflex(CR)) { dmg2 = dmg2/2;}
+		group[tilf].setHp(group[tilf].getHp() - dmg2);
+		System.out.println(group[tilf].getName() + " triggers a trap and takes " +dmg2 + " dmg");
+		if(group[tilf].getHp() < 1) {characterDeath(tilf);}
+		
 	}
 
 }

@@ -16,6 +16,7 @@ public class Cleric extends CharacterDCC{
 		occupation = "Cleric";
 		gainHp(8);
 		lvl = 1;
+		
 	//	System.out.println("Choose your god");
 	//	god = tastatur.nextLine(); 
 	//	spellbook = divineSpells(god);

@@ -1,5 +1,7 @@
 package dcc;
 
+import tools.Diceroller;
+
 public class Party {
 
 	CharacterDCC[] group;
@@ -110,6 +112,11 @@ public class Party {
 		for (int i = 0; i<members;i++) {
 			 group[i].levelUp();
 		}
+	}
+	
+	public CharacterDCC randomChar() {
+		int tilf = Diceroller.dx(1,members);
+		return group[tilf];
 	}
 
 		}

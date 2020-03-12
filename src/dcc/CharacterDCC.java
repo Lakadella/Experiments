@@ -534,6 +534,38 @@ public class CharacterDCC {
 				}
 				maxHp = maxHp + roll;
 			}
+			public void combatAction(Scanner tastatur, Mob mob) {
+				System.out.println("What do you want to do? 1. attack 2. run");
+				int valg = Integer.parseInt(tastatur.nextLine());
+				Monster[] monsters = mob.getMonsters();
+				switch (valg) {
+				case 1:
+					mob.listMonsters();
+					System.out.println("Who do you want to attack?");
+					int target = Integer.parseInt(tastatur.nextLine());
+					int dmg = this.attack(monsters[target]);
+					if(monsters[target] != null) {
+					monsters[target].setHp(monsters[target].getHp() - dmg);
+					if (monsters[target].getHp() <= 0) {
+						mob.monsterDeath(target);}}
+					break;
+				case 2:
+					System.out.println(this.getName() + " tries to run");
+					break;
+				default:
+					break;
+				}
+
+			}
+			
+			public void fullHeal() {
+				hp = maxHp;
+			}
+			
+			public boolean reflex(int CR) {
+				return (Diceroller.d20(1) + refSave > CR);
+			}
+			
 		}
 
 	
