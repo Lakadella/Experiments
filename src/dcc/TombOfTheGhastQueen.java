@@ -20,11 +20,12 @@ public class TombOfTheGhastQueen {
 	public static Encounter room12;
 	public static Encounter room13;
 	public static Party testParty;
+	public static int gemCounter;
 
 	public static void main(String[] args) {
 
 		tastatur = new Scanner(System.in);
-		int gemCounter = 0;
+		gemCounter = 0;
 		boolean abort = false;
 
 		prepare();
@@ -61,9 +62,13 @@ public class TombOfTheGhastQueen {
 		room2 = new Encounter(testParty);
 		room3 = new Encounter(testParty);
 		Mob mob4 = new Mob(servitor,1);
-		room4 = new Encounter(testParty,mob4);		
-		room5 = new Encounter(testParty);
-		room6 = new Encounter(testParty);
+		room4 = new Encounter(testParty,mob4);
+		Monster hollow = new Monster("Togs",0,2,1,4,0,12,2,8,0,1,2,6);
+		Mob mob5 = new Mob(hollow,1);
+		room5 = new Encounter(testParty,mob5);
+		Monster frogman = new Monster("Toadman",2,4,1,4,1,13, 2,8,0,1,3,0);
+		Mob mob6 = new Mob(frogman,2);
+		room6 = new Encounter(testParty,mob6);
 		room7 = new Encounter(testParty);
 		room8 = new Encounter(testParty);
 		room9 = new Encounter(testParty);
@@ -154,7 +159,7 @@ public class TombOfTheGhastQueen {
 		System.out.println("1 to search the room. 2 to return to the corridor");
 		
 		switch(tastatur.nextInt()) {
-		case 1 : System.out.println("You fond nothing of interest"); room3(); break;
+		case 1 : System.out.println("You find nothing of interest"); room3(); break;
 		case 2 : room2();break;
 		
 		}
@@ -168,7 +173,12 @@ public class TombOfTheGhastQueen {
 			room4.melee2(tastatur);
 			room4.visited = true;
 		}
-		
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room4(); break;
+		case 2 : room1();break;
+		case 3 : room5(); break;
+		case 4 : room6(); break;
+		}
 		
 		
 		
@@ -177,81 +187,132 @@ public class TombOfTheGhastQueen {
 	// room 5 - Hollow one -gem
 	// connects 6,4
 	public static void room5() {
-		if (room1.visited != true) {
-			// text first time in room
-			room1.visited = true;
+		if (room5.visited != true) {
+			System.out.println("You are attacked by a tall, gaunt humanoid wearing robes");
+			room5.melee2(tastatur); // spellcasting not implemented yet
+			room5.visited = true;
+		}
+		if (room5.cleared == true) {
+			gemCounter++;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room4();break;
+		case 3 : room6(); break;
 		}
 	}
 
 	// room 6 - 2 toadmen
 	// connects 5,4
 	public static void room6() {
-		if (room1.visited != true) {
-			// text first time in room
-			room1.visited = true;
+		if (room6.visited != true) {
+			System.out.println("2 shapes jump at you. Are they human? Are they frogs? No! Something in between");
+			room6.melee2(tastatur);
+			room6.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room4();break;
+		case 3 : room5(); break;
 		}
 	}
 
 	// room 7 - 5 different traps -gem
 	// connects 1,10
 	public static void room7() {
-		if (room1.visited != true) {
+		if (room7.visited != true) {
 			// text first time in room
-			room1.visited = true;
+			room7.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room1();break;
+		case 3 : room10(); break;
 		}
 	}
 
 	// room 8 - green slime(basically a trap)
 	// connects 9
 	public static void room8() {
-		if (room1.visited != true) {
+		if (room8.visited != true) {
 			// text first time in room
-			room1.visited = true;
+			room8.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room9();break;
+		
 		}
 	}
 
 	// room 9 - falling roof trap
 	// connects 10,8
 	public static void room9() {
-		if (room1.visited != true) {
+		if (room9.visited != true) {
 			// text first time in room
-			room1.visited = true;
+			room9.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room8();break;
+		case 3 : room10(); break;
 		}
 	}
 
 	// room 10 - 8 skeletons
 	// connects 1,9,11
 	public static void room10() {
-		if (room1.visited != true) {
+		if (room10.visited != true) {
 			// text first time in room
-			room1.visited = true;
+			room10.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room1();break;
+		case 3 : room9(); break;
+		case 4 : room11();break;
 		}
 	}
 
 	// room 11 - just a gem - gem
 	// connects 10,12
 	public static void room11() {
-		if (room1.visited != true) {
+		if (room11.visited != true) {
 			// text first time in room
-			room1.visited = true;
+			room11.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room10();break;
+		case 3 : room12(); break;
 		}
 	}
 
 	// room 12 - touch trap - gem
 	// connects 11,13
 	public static void room12() {
-		if (room1.visited != true) {
+		if (room12.visited != true) {
 			// text first time in room
-			room1.visited = true;
+			room12.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room11();break;
+		case 3 : room13(); break;
 		}
 	}
 
 	// room 13 - Wight boss fight - gem
 	// connects 12
 	public static void room13() {
-		if (room1.visited != true) {
+		if (room13.visited != true) {
 			// text first time in room
-			room1.visited = true;
+			room13.visited = true;
+		}
+		switch(tastatur.nextInt()) {
+		case 1 : System.out.println("You find nothing of interest"); room5(); break;
+		case 2 : room12();break;
+		
 		}
 	}
 
