@@ -35,6 +35,7 @@ public class Encounter {
 		group = party.getGroup();
 		visited = false;
 		cleared = false;
+		antallchars = group.length;
 		
 	}
 	

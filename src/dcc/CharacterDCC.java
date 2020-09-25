@@ -84,6 +84,7 @@ public class CharacterDCC {
 			willSave = perMod;
 			fortSave = staMod;
 			refSave = agiMod;
+			initiativeMod=agiMod;
 			}
 			
 			
@@ -137,6 +138,7 @@ public class CharacterDCC {
 				perMod = calculateMod(per);
 				itlMod = calculateMod(itl);
 				lckMod = calculateMod(lck);
+				initiativeMod=agiMod;
 			}
 			public CharacterDCC(int str, int agi,int sta, int per,int itl, int lck, int hp, int maxHP, String armor, int ac, boolean shield, int randomizer, String name, int money,String weapon) {
 				this.str=str; this.agi=agi; this.sta=sta; this.per=per; this.itl=itl; this.lck = lck; this.hp=hp; this.maxHp=maxHP;  this.shield=shield;this.randomizer=randomizer;
@@ -150,6 +152,7 @@ public class CharacterDCC {
 				lckMod = calculateMod(lck);
 				this.armor=armoury.findArmor(armor);
 				this.weapon=armoury.findWeapon(weapon);
+				initiativeMod=agiMod;
 			}
 			
 			

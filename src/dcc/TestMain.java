@@ -9,7 +9,7 @@ public class TestMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub	
 	
-		Party nyttParty = Party.newParty(4);
+		/*Party nyttParty = Party.newParty(4);
 		
 		CharacterDCC[] group = nyttParty.getGroup();
 		
@@ -20,9 +20,11 @@ public class TestMain {
 		
 		group = lestParty.getGroup();
 		for (CharacterDCC cd : group) {
-			System.out.println(cd.toString());
+			System.out.println(cd.toString());*/
+		
+		CharacterDCC ny = new CharacterDCC();
 		}
 	
 	}
 
-}
+
